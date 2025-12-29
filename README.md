@@ -1,8 +1,6 @@
 # Phase-Programmable LNA (PP-LNA) for NAVIC L5 Beamforming
 
-This repository contains the design and documentation of a
-**Phase-Programmable Low-Noise Amplifier (PP-LNA)** intended for
-analog beamforming in **NAVIC L5-band (1176.45 MHz) GNSS receivers**.
+This design is planned for for analog beamforming in **NAVIC L5-band (1176.45 MHz) GNSS receivers** for CRPA implementation.
 
 The PP-LNA integrates:
 - A low-noise CMOS LNA, and
@@ -13,7 +11,7 @@ an external RF combiner to realize analog beamforming or CRPA-like reception.
 
 ## Motivation
 Conventional NAVIC receivers use a single antenna and RF chain.
-This work explores a modular, reusable RF front-end that enables
+This design explores a modular, reusable RF front-end that enables
 beamforming using multiple antennas without requiring multi-channel ADCs.
 
 ## Architecture Overview
