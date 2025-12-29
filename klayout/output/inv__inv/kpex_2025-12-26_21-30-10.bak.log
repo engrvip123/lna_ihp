@@ -1,0 +1,31 @@
+[2025-12-26 21:30:10,146] [INFO]    GDS input file passed, running in LVS mode
+[2025-12-26 21:30:10,149] [INFO]    No explicit top cell specified, using top cell 'inv'
+[2025-12-26 21:30:10,150] [INFO]    LVS input schematic not specified (argument --schematic), using dummy schematic
+[2025-12-26 21:30:10,155] [INFO]    Calling MAGIC
+[2025-12-26 21:30:10,156] [SUBPROCESS]    magic -dnull -noconsole -rcfile /home/ic_design_trg/pdk/ihp-sg13g2/libs.tech/magic/ihp-sg13g2.magicrc output/inv__inv/magic_CC/inv_MAGIC_CC_Script.tcl, output file: output/inv__inv/magic_CC/inv_MAGIC_CC_Output.txt
+[2025-12-26 21:30:10,216] [SUBPROCESS]    
+[2025-12-26 21:30:10,216] [SUBPROCESS]    Magic 8.3 revision 495 - Compiled on Wednesday 09 October 2024 01:59:42 PM IST.
+[2025-12-26 21:30:10,217] [SUBPROCESS]    Starting magic under Tcl interpreter
+[2025-12-26 21:30:10,217] [SUBPROCESS]    Using the terminal as the console.
+[2025-12-26 21:30:10,218] [SUBPROCESS]    Using NULL graphics device.
+[2025-12-26 21:30:10,276] [SUBPROCESS]    Processing system .magicrc file
+[2025-12-26 21:30:10,288] [SUBPROCESS]    Sourcing design .magicrc for technology ihp-sg13g2 ...
+[2025-12-26 21:30:10,289] [SUBPROCESS]    2 Magic internal units = 1 Lambda
+[2025-12-26 21:30:10,296] [SUBPROCESS]    /home/ic_design_trg/pdk/ciel/ihp-sg13g2/versions/34c00bdd15efd3406ab028896d2182236aad3aa7/ihp-sg13g2/libs.tech/magic/ihp-sg13g2.tech: line 32: section version:
+[2025-12-26 21:30:10,297] [SUBPROCESS]    	Error:  Magic version 8.3.524 is required by this techfile, but this version of magic is 8.3.495.
+[2025-12-26 21:30:10,304] [SUBPROCESS]    /home/ic_design_trg/pdk/ciel/ihp-sg13g2/versions/34c00bdd15efd3406ab028896d2182236aad3aa7/ihp-sg13g2/libs.tech/magic/ihp-sg13g2.tech: line 678: section cifoutput:
+[2025-12-26 21:30:10,304] [SUBPROCESS]    	Wrong number of arguments in bloat-all statement.
+[2025-12-26 21:30:10,305] [SUBPROCESS]    Input style sg13g2(): scaleFactor=2, multiplier=2
+[2025-12-26 21:30:10,368] [SUBPROCESS]    The following types are not handled by extraction and will be treated as non-electrical types:
+[2025-12-26 21:30:10,369] [SUBPROCESS]        fillfet sealcont difffill nemitter hvnemitter hvisodiffres sealvia1 sealvia2 sealvia3 sealvia4 sealvia5 sealvia6 pad seal thruvia 
+[2025-12-26 21:30:10,369] [SUBPROCESS]    The following sections of /home/ic_design_trg/pdk/ciel/ihp-sg13g2/versions/34c00bdd15efd3406ab028896d2182236aad3aa7/ihp-sg13g2/libs.tech/magic/ihp-sg13g2.tech contained errors:
+[2025-12-26 21:30:10,369] [SUBPROCESS]        version
+[2025-12-26 21:30:10,386] [SUBPROCESS]    Scaled tech values by 2 / 1 to match internal grid scaling
+[2025-12-26 21:30:10,387] [SUBPROCESS]    Loading "output/inv__inv/magic_CC/inv_MAGIC_CC_Script.tcl" from command line.
+[2025-12-26 21:30:10,388] [SUBPROCESS]    Don't know how to read GDS-II:
+[2025-12-26 21:30:10,388] [SUBPROCESS]    Nothing in "cifinput" section of tech file.
+[2025-12-26 21:30:10,389] [SUBPROCESS]    Cell inv couldn't be read
+[2025-12-26 21:30:10,389] [SUBPROCESS]    No such file or directory
+[2025-12-26 21:30:10,389] [SUBPROCESS]    Creating new cell
+[2025-12-26 21:30:10,390] [SUBPROCESS]    Warning:  There is nothing here to extract.
+[2025-12-26 21:30:10,395] [INFO]    MAGIC succeeded after 0.2355s

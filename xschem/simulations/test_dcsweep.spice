@@ -1,0 +1,53 @@
+** sch_path: /home/ic_design_trg/lna_ihp/xschem/test_dcsweep.sch
+**.subckt test_dcsweep
+Vgs G GND 'vg'
+Vds D GND 1.5
+Vd D net1 0
+.save i(vd)
+XM1 net1 G GND GND sg13_lv_nmos w='wid' l=0.45u ng=1 m=1
+**** begin user architecture code
+ .lib cornerMOSlv.lib mos_tt
+
+
+
+
+*.include dc_lv_nmos.save
+.param temp=27 wid=1.0u vg=1.2
+
+
+.control
+save all
+op
+write test_dcsweep.raw
+set appendwrite
+
+* --- wid = 1u ---
+alterparam wid=1u
+reset
+dc Vds 0 1.2 0.01
+write test_dcsweep.raw
+set appendwrite
+
+
+* --- wid = 10u ---
+alterparam wid=10u
+reset
+dc Vds 0 1.2 0.01
+write test_dcsweep.raw
+set appendwrite
+
+
+* --- wid = 20u ---
+alterparam wid=20u
+reset
+dc Vds 0 1.2 0.01
+write test_dcsweep.raw
+
+.endc
+
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

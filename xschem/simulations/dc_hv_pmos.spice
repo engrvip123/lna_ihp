@@ -1,0 +1,32 @@
+** sch_path: /home/ic_design_trg/pdk/ihp-sg13g2/libs.tech/xschem/sg13g2_tests/dc_hv_pmos.sch
+**.subckt dc_hv_pmos
+Vgs net1 GND 'abc'
+Vds net3 GND -1.5
+XM1 net2 net1 GND GND sg13_hv_pmos w='wid' l=0.45u ng=1 m=1
+Vd net3 net2 0
+.save i(vd)
+**** begin user architecture code
+
+.lib cornerMOShv.lib mos_tt
+
+
+
+.param temp=27 wid=10.0u abc=1
+.options savecurrents
+*.include dc_hv_pmos.save
+.control
+save all
+op
+write dc_hv_pmos.raw
+set appendwrite
+print I(Vd)
+dc Vds 0 -2 -0.01
+* Vgs -0.45 -1.1 -0.05
+write dc_hv_pmos.raw
+.endc
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

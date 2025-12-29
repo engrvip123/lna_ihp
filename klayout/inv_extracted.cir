@@ -1,0 +1,8 @@
+* Extracted by KLayout with SG13G2 LVS runset on : 26/12/2025 19:48
+
+.SUBCKT inv
+M$1 \$1 \$4 \$3 \$1 sg13_lv_nmos L=0.72u W=1u AS=0.34p AD=0.34p PS=2.68u
++ PD=2.68u
+M$2 \$2 \$4 \$3 \$2 sg13_lv_pmos L=0.72u W=1u AS=0.34p AD=0.34p PS=2.68u
++ PD=2.68u
+.ENDS inv

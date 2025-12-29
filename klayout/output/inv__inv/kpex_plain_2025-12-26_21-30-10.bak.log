@@ -1,0 +1,31 @@
+GDS input file passed, running in LVS mode
+No explicit top cell specified, using top cell 'inv'
+LVS input schematic not specified (argument --schematic), using dummy schematic
+Calling MAGIC
+magic -dnull -noconsole -rcfile /home/ic_design_trg/pdk/ihp-sg13g2/libs.tech/magic/ihp-sg13g2.magicrc output/inv__inv/magic_CC/inv_MAGIC_CC_Script.tcl, output file: output/inv__inv/magic_CC/inv_MAGIC_CC_Output.txt
+
+Magic 8.3 revision 495 - Compiled on Wednesday 09 October 2024 01:59:42 PM IST.
+Starting magic under Tcl interpreter
+Using the terminal as the console.
+Using NULL graphics device.
+Processing system .magicrc file
+Sourcing design .magicrc for technology ihp-sg13g2 ...
+2 Magic internal units = 1 Lambda
+/home/ic_design_trg/pdk/ciel/ihp-sg13g2/versions/34c00bdd15efd3406ab028896d2182236aad3aa7/ihp-sg13g2/libs.tech/magic/ihp-sg13g2.tech: line 32: section version:
+	Error:  Magic version 8.3.524 is required by this techfile, but this version of magic is 8.3.495.
+/home/ic_design_trg/pdk/ciel/ihp-sg13g2/versions/34c00bdd15efd3406ab028896d2182236aad3aa7/ihp-sg13g2/libs.tech/magic/ihp-sg13g2.tech: line 678: section cifoutput:
+	Wrong number of arguments in bloat-all statement.
+Input style sg13g2(): scaleFactor=2, multiplier=2
+The following types are not handled by extraction and will be treated as non-electrical types:
+    fillfet sealcont difffill nemitter hvnemitter hvisodiffres sealvia1 sealvia2 sealvia3 sealvia4 sealvia5 sealvia6 pad seal thruvia 
+The following sections of /home/ic_design_trg/pdk/ciel/ihp-sg13g2/versions/34c00bdd15efd3406ab028896d2182236aad3aa7/ihp-sg13g2/libs.tech/magic/ihp-sg13g2.tech contained errors:
+    version
+Scaled tech values by 2 / 1 to match internal grid scaling
+Loading "output/inv__inv/magic_CC/inv_MAGIC_CC_Script.tcl" from command line.
+Don't know how to read GDS-II:
+Nothing in "cifinput" section of tech file.
+Cell inv couldn't be read
+No such file or directory
+Creating new cell
+Warning:  There is nothing here to extract.
+MAGIC succeeded after 0.2355s

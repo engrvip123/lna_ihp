@@ -1,0 +1,9 @@
+26-Dec-2025 19:34:54 | INFO    | KLayout version detected: 0.30.5
+26-Dec-2025 19:34:54 | INFO    | Using DRC JSON file: /home/ic_design_trg/pdk/ciel/ihp-sg13g2/versions/34c00bdd15efd3406ab028896d2182236aad3aa7/ihp-sg13g2/libs.tech/klayout/python/sg13g2_pycell_lib/sg13g2_tech_mod.json
+26-Dec-2025 19:34:54 | INFO    | Running IHP-SG13G2 main checks on design /home/ic_design_trg/lna_ihp/klayout/inv.gds, topcell: inv
+26-Dec-2025 19:34:58 | INFO    | Running IHP-SG13G2 sg13g2_maximal checks on design /home/ic_design_trg/lna_ihp/klayout/inv.gds, topcell: inv
+26-Dec-2025 19:35:05 | INFO    | Completed running Sg13g2_maximal checks.
+26-Dec-2025 19:35:05 | INFO    | =====================================================================================
+26-Dec-2025 19:35:05 | INFO    | ✅ --- KLayout DRC Check Passed: No DRC violations detected in the layout. --- ✅
+26-Dec-2025 19:35:05 | INFO    | =====================================================================================
+26-Dec-2025 19:35:05 | INFO    | Total DRC Run time: 10.95 seconds (including execution, analysis, and reporting)

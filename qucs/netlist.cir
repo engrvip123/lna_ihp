@@ -1,0 +1,55 @@
+* Qucs 25.2.0  /home/ic_design_trg/lna_ihp/qucs/lna.sch
+.INCLUDE "/usr/local/share/qucs-s/xspice_cmlib/include/ngspice_mathfunc.inc"
+
+.SUBCKT IHP_PDK_nonlinear_components_sg13_lv_nmos  gnd d g s b w=0.15u l=0.15u ng=1 m=1 mismatch=0 as=0 ad=0 pd=0 ps=0 trise=0 z1=0.34e-6 z2=0.38e-6 wmin=0.15e-6 rfmode=0 pre_layout=1 mlist=1
+X1 d g s b  sg13_lv_nmos w={w} l={l} ng={ng} m={m} mm_ok={mismatch} as={as} ad={ad} pd={pd} 
++ ps={ps} trise={trise} z1={z1} z2={z2} wmin={wmin} rfmode={rfmode} pre_layout={pre_layout} 
+.ENDS
+  
+.LIB cornerMOSlv.lib mos_tt
+
+.save all @n.xmn0.x1.nsg13_lv_nmos[gm]
+.save all @n.xmn0.x1.nsg13_lv_nmos[gds]
+.save all @n.xmn0.x1.nsg13_lv_nmos[cgs]
+.save all @n.xmn0.x1.nsg13_lv_nmos[cgd]
+.save all @n.xmn0.x1.nsg13_lv_nmos[cdb]
+.save all @n.xmn0.x1.nsg13_lv_nmos[vth]
+
+V1 vdd  0 1.2
+VP1 _net2 0 dc 0 ac 0.632456 SIN(0 0.632456 1MEG) portnum 1 z0 50
+V2 _net7 0 DC 0.6
+R1 _net7 _net3  10K tc1=0.0 tc2=0.0 
+VP2 _net1 0 dc 0 ac 0.632456 SIN(0 0.632456 1MEG) portnum 2 z0 50
+Xsg13_lv_nmos1 0 _net6 _net4 _net5 0 IHP_PDK_nonlinear_components_sg13_lv_nmos w=76U l=0.18U ng=1 m=1 mismatch=1 as=0 ad=0 pd=0 ps=0 trise=0 z1=0.34E-6 z2=0.38E-6 wmin=0.15E-6 rfmode=0 pre_layout=1
+Xsg13_lv_nmos2 0 _net0 vdd _net6 0 IHP_PDK_nonlinear_components_sg13_lv_nmos w=76U l=0.18U ng=1 m=1 mismatch=1 as=0 ad=0 pd=0 ps=0 trise=0 z1=0.34E-6 z2=0.38E-6 wmin=0.15E-6 rfmode=0 pre_layout=1
+LQ3 _net5 _net_LQ3 L='0.25N'
+RLQ3 _net_LQ3 0 R='8*atan(1)*(0.25N)*(1100MEG)/(5)'
+LQ2 _net3 _net_LQ2 L='6.5N'
+RLQ2 _net_LQ2 _net4 R='8*atan(1)*(6.5N)*(1100MEG)/(10)'
+LQ1 vdd _net_LQ1 L='5N'
+RLQ1 _net_LQ1 _net0 R='8*atan(1)*(5N)*(1100MEG)/(10)'
+C1 _net0 _net1  15P 
+C2 _net2 _net3  20P 
+
+
+.control
+
+op
+print v(vdd)   > spice4qucs.dc1.ngspice.dc.print
+destroy all
+reset
+
+SP DEC 13 1MEG 10G 1
+let db_s11 = dB(S_1_1)
+let db_s21 = dB(S_2_1)
+let db_s12 = dB(S_1_2)
+let db_s22 = dB(S_2_2)
+let db_nf = dB(nf)
+let db_nfmin = dB(nfmin)
+write spice4qucs.sp1.plot S_1_1 Y_1_1 Z_1_1 Cy_1_1 S_1_2 Y_1_2 Z_1_2 Cy_1_2 S_2_1 Y_2_1 Z_2_1 Cy_2_1 S_2_2 Y_2_2 Z_2_2 Cy_2_2 Rn NF SOpt NFmin db_s11 db_s21 db_s12 db_s22 db_nf db_nfmin
+destroy all
+reset
+
+exit
+.endc
+.END

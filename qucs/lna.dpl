@@ -1,0 +1,39 @@
+<Qucs Schematic 25.2.0>
+<Properties>
+  <View=-72,-54,1503,798,1,72,114>
+  <Grid=10,10,0>
+  <DataSet=lna.dat>
+  <DataDisplay=lna.sch>
+  <OpenDisplay=0>
+  <Script=lna.m>
+  <RunScript=0>
+  <showFrame=0>
+  <FrameText0=Title>
+  <FrameText1=Drawn By:>
+  <FrameText2=Date:>
+  <FrameText3=Revision:>
+</Properties>
+<Symbol>
+</Symbol>
+<Components>
+  <NutmegEq NutmegEq3 1 0 0 -28 16 0 0 "ALL" 1 "y=1" 1>
+  <NutmegEq NutmegEq2 1 140 660 -28 16 0 0 "ALL" 1 "dbs11=db(ac.s_1_1)" 1>
+</Components>
+<Wires>
+</Wires>
+<Diagrams>
+  <Rect 430 240 240 160 3 #c0c0c0 1 00 1 0 0.2 1 1 -0.1 0.5 1.1 1 -0.1 0.5 1.1 315 0 225 1 0 0 "" "" "">
+	<"ngspice/ac.s_1_2" #0000ff 1 3 0 0 0>
+  </Rect>
+  <Rect 830 250 240 160 3 #c0c0c0 1 00 1 0 0.2 1 1 -0.1 0.5 1.1 1 -0.1 0.5 1.1 315 0 225 1 0 0 "" "" "">
+	<"ngspice/ac.s_2_1" #0000ff 1 3 0 0 0>
+  </Rect>
+  <Rect 420 550 240 160 3 #c0c0c0 1 00 1 0 2e+09 1e+10 1 0.338702 0.5 1.05995 1 -1 1 1 315 0 225 1 0 0 "" "" "">
+	<"ngspice/ac.s_1_1" #0000ff 1 3 0 0 0>
+  </Rect>
+  <Rect 830 550 240 160 3 #c0c0c0 1 00 1 0 0.2 1 1 -0.1 0.5 1.1 1 -0.1 0.5 1.1 315 0 225 1 0 0 "" "" "">
+	<"ngspice/ac.s_2_2" #0000ff 1 3 0 0 0>
+  </Rect>
+</Diagrams>
+<Paintings>
+</Paintings>

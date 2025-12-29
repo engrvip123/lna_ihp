@@ -1,0 +1,19 @@
+* NGSPICE file created from inv.ext - technology: ihp-sg13g2
+
+.subckt inv vss vdd inp out
+X0 out a_3738_6669# vdd vdd sg13_lv_pmos ad=0.34p pd=2.68u as=0.34p ps=2.68u w=1u l=0.72u
+X1 out a_3738_5898# vss vss sg13_lv_nmos ad=0.34p pd=2.68u as=0.34p ps=2.68u w=1u l=0.72u
+C0 out a_3738_6669# 0.02815f
+C1 inp out 0.38703f
+C2 out vdd 0.28857f
+C3 a_3738_5898# out 0.02655f
+C4 inp a_3738_6669# 0.05408f
+C5 a_3738_6669# vdd 0.23589f
+C6 inp vdd 0.30664f
+C7 inp a_3738_5898# 0.05348f
+C8 inp vss 0.4191f
+C9 out vss 0.68555f
+C10 vdd vss 0.55752f
+C11 a_3738_5898# vss 0.35657f $ **FLOATING
+C12 a_3738_6669# vss 0.11929f $ **FLOATING
+.ends

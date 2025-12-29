@@ -1,0 +1,56 @@
+[2025-12-26 21:48:26,021] [INFO]    GDS input file passed, running in LVS mode
+[2025-12-26 21:48:26,023] [INFO]    No explicit top cell specified, using top cell 'inv'
+[2025-12-26 21:48:26,024] [INFO]    LVS input schematic not specified (argument --schematic), using dummy schematic
+[2025-12-26 21:48:26,028] [INFO]    Calling MAGIC
+[2025-12-26 21:48:26,029] [SUBPROCESS]    magic -dnull -noconsole -rcfile /home/ic_design_trg/pdk/ihp-sg13g2/libs.tech/magic/ihp-sg13g2.magicrc output/inv__inv/magic_CC/inv_MAGIC_CC_Script.tcl, output file: output/inv__inv/magic_CC/inv_MAGIC_CC_Output.txt
+[2025-12-26 21:48:26,044] [SUBPROCESS]    
+[2025-12-26 21:48:26,047] [SUBPROCESS]    Magic 8.3 revision 585 - Compiled on Friday 26 December 2025 09:42:32 PM IST.
+[2025-12-26 21:48:26,049] [SUBPROCESS]    Starting magic under Tcl interpreter
+[2025-12-26 21:48:26,050] [SUBPROCESS]    Using the terminal as the console.
+[2025-12-26 21:48:26,050] [SUBPROCESS]    Using NULL graphics device.
+[2025-12-26 21:48:26,075] [SUBPROCESS]    Processing system .magicrc file
+[2025-12-26 21:48:26,081] [SUBPROCESS]    Switching to WIRING tool.
+[2025-12-26 21:48:26,082] [SUBPROCESS]    Switching to NETLIST tool.
+[2025-12-26 21:48:26,082] [SUBPROCESS]    Switching to PICK tool.
+[2025-12-26 21:48:26,083] [SUBPROCESS]    Switching to BOX tool.
+[2025-12-26 21:48:26,086] [SUBPROCESS]    Sourcing design .magicrc for technology ihp-sg13g2 ...
+[2025-12-26 21:48:26,086] [SUBPROCESS]    2 Magic internal units = 1 Lambda
+[2025-12-26 21:48:26,097] [SUBPROCESS]    Input style sg13g2(): scaleFactor=2, multiplier=2
+[2025-12-26 21:48:26,153] [SUBPROCESS]    The following types are not handled by extraction and will be treated as non-electrical types:
+[2025-12-26 21:48:26,154] [SUBPROCESS]        fillfet sealcont difffill nemitter hvnemitter hvisodiffres sealvia1 sealvia2 sealvia3 sealvia4 sealvia5 sealvia6 pad seal thruvia 
+[2025-12-26 21:48:26,157] [SUBPROCESS]    Scaled tech values by 2 / 1 to match internal grid scaling
+[2025-12-26 21:48:26,158] [SUBPROCESS]    Loading "output/inv__inv/magic_CC/inv_MAGIC_CC_Script.tcl" from command line.
+[2025-12-26 21:48:26,158] [SUBPROCESS]    Warning: Calma reading is not undoable!  I hope that's OK.
+[2025-12-26 21:48:26,158] [SUBPROCESS]    Library written using GDS-II Release 6.0
+[2025-12-26 21:48:26,159] [SUBPROCESS]    Library name: LIB
+[2025-12-26 21:48:26,159] [SUBPROCESS]    Reading "$$$CONTEXT_INFO$$$".
+[2025-12-26 21:48:26,159] [SUBPROCESS]    Reading "via_stack".
+[2025-12-26 21:48:26,159] [SUBPROCESS]    Reading "nmos".
+[2025-12-26 21:48:26,160] [SUBPROCESS]    Reading "pmos".
+[2025-12-26 21:48:26,160] [SUBPROCESS]    Reading "via_stack$2".
+[2025-12-26 21:48:26,160] [SUBPROCESS]    Reading "inv".
+[2025-12-26 21:48:26,161] [SUBPROCESS]    Extracting inv into /home/ic_design_trg/lna_ihp/klayout/output/inv__inv/magic_CC/inv.ext:
+[2025-12-26 21:48:26,166] [SUBPROCESS]    exttospice finished.
+[2025-12-26 21:48:26,168] [INFO]    MAGIC succeeded after 0.1383s
+[2025-12-26 21:48:26,173] [SUBPROCESS]    Report DB saved at: output/inv__inv/magic_CC/inv_MAGIC_report.rdb.gz
+[2025-12-26 21:48:26,174] [SUBPROCESS]    SPICE netlist saved at: output/inv__inv/magic_CC/inv.pex.spice
+[2025-12-26 21:48:26,174] [SUBPROCESS]    * NGSPICE file created from inv.ext - technology: ihp-sg13g2
+
+.subckt inv vss vdd inp out
+X0 out a_3738_6669# vdd vdd sg13_lv_pmos ad=0.34p pd=2.68u as=0.34p ps=2.68u w=1u l=0.72u
+X1 out a_3738_5898# vss vss sg13_lv_nmos ad=0.34p pd=2.68u as=0.34p ps=2.68u w=1u l=0.72u
+C0 out a_3738_6669# 0.02815f
+C1 inp out 0.38703f
+C2 out vdd 0.28857f
+C3 a_3738_5898# out 0.02655f
+C4 inp a_3738_6669# 0.05408f
+C5 a_3738_6669# vdd 0.23589f
+C6 inp vdd 0.30664f
+C7 inp a_3738_5898# 0.05348f
+C8 inp vss 0.4191f
+C9 out vss 0.68555f
+C10 vdd vss 0.55752f
+C11 a_3738_5898# vss 0.35657f $ **FLOATING
+C12 a_3738_6669# vss 0.11929f $ **FLOATING
+.ends
+
