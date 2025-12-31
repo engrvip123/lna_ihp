@@ -6,40 +6,39 @@
     "type": "individual",
     "role": "maintainer",
     "name": "Vipul Sharma",
-    "email": "REPLACE_WITH_EMAIL",
-    "phone": "REPLACE_OPTIONALLY",
-    "description": "Independent analog/mixed-signal IC designer working on open-source RF building blocks, tools, and education. Focused on enabling students, researchers, and startups to design real silicon using open PDKs and free EDA tooling.",
+    "email": "engr.vipul@gmail.com",
+    "description": "Analog/RF IC designer and open-source silicon contributor, founder of NAVIA-LABS. Focused on reproducible RFIC design using open PDKs and open-source EDA tools. Maintains and develops open-source, silicon-intended reference designs for education, research, and GNSS resilience.",
     "webpageUrl": {
-      "url": "https://REPLACE_WITH_PROFILE_OR_SITE",
+      "url": "https://www.linkedin.com/in/vipul-k-sharma",
       "wellKnown": ""
     }
   },
 
   "projects": [
     {
-      "guid": "navic-pp-lna",
-      "name": "Open-Source Phase-Programmable LNA for NAVIC L5",
-      "description": "An open-source low-noise amplifier with programmable RF phase control, designed using the IHP SG13G2 open PDK. Intended for NAVIC L5 GNSS beamforming (anti-jamming/anti-spoofing CRPA systems). The project demonstrates how open EDA tools and open PDKs can enable high-performance RF IC design for education, research, and startups — without restrictive licenses.",
+      "guid": "pp-lna-gnss",
+      "name": "Open-Source Phase-Programmable LNA Semiconductor Chip for GNSS Beamforming",
+      "description": "An open-source RFIC design of a Phase-Programmable Low-Noise Amplifier (PP-LNA) for GNSS receivers, targeting CRPA beamforming, anti-jamming, and anti-spoofing applications. Implemented using the IHP SG13G2 open PDK and a fully open-source EDA flow, enabling end-to-end, silicon-backed RFIC development without proprietary tools.",
       "webpageUrl": {
-        "url": "https://REPLACE_WITH_PROJECT_PAGE",
+        "url": "https://github.com/engrvip123/lna_ihp",
         "wellKnown": ""
       },
       "repositoryUrl": {
-        "url": "https://REPLACE_WITH_REPO_URL",
+        "url": "https://github.com/engrvip123/lna_ihp",
         "wellKnown": ""
       },
       "licenses": [
-        "spdx:Apache-2.0"
+        "spdx:CERN-OHL-S-2.0"
       ],
       "tags": [
-        "hardware",
-        "rf",
-        "analog",
+        "open-hardware",
+        "rfic-design",
         "gnss",
-        "navic",
-        "lna",
+        "beamforming",
+        "crpa",
         "open-pdk",
-        "eda-tools"
+        "analog-ic",
+        "open-source-silicon"
       ]
     }
   ],
@@ -49,58 +48,80 @@
       {
         "guid": "bank-transfer",
         "type": "bank",
-        "address": "REPLACE_WITH_BANK_DETAILS_OR_INTERMEDIARY",
-        "description": "Primary channel for grants and larger transfers."
+        "address": "Available on request",
+        "description": "Direct bank transfer"
       },
       {
-        "guid": "payment-provider",
+        "guid": "upi",
         "type": "payment-provider",
-        "address": "https://REPLACE_WITH_DONATION_LINK",
-        "description": "Online contributions and smaller payments."
+        "address": "UPI ID available on request",
+        "description": "UPI payments via GPay, PhonePe, Paytm"
       }
     ],
 
     "plans": [
       {
-        "guid": "documentation-and-training",
+        "guid": "Engineering effort 12 months",
         "status": "active",
-        "name": "Documentation, tutorials, and student onboarding",
-        "description": "Complete beginner-friendly docs, examples, and training material showing how to design RF chips using open PDKs and tools — using this LNA as a reference design.",
-        "amount": 15000,
+        "name": "Engineering effort (12 months)",
+        "description": "Covers 12 months of design, simulation, EM verification, layout, documentation and reproducible open-source release of the Phase-Programmable LNA.",
+        "amount": 12000,
         "currency": "USD",
-        "frequency": "one-time",
-        "channels": ["bank-transfer", "payment-provider"]
+        "frequency": "monthly",
+        "channels": [
+          "bank-transfer",
+          "upi"
+        ]
       },
       {
-        "guid": "core-design-and-validation",
+        "guid": "ihp-mpw-tapeout",
         "status": "active",
-        "name": "Design completion, simulations, and verification",
-        "description": "Finalize LNA architecture, phase-shifter integration, EM/layout verification, test benches, and reproducible open flows.",
-        "amount": 35000,
-        "currency": "USD",
-        "frequency": "one-time",
-        "channels": ["bank-transfer"]
-      },
-      {
-        "guid": "community-support",
-        "status": "active",
-        "name": "Community support & maintenance",
-        "description": "Ongoing bug fixes, updates, mentoring, and responding to issues so the project remains usable for others.",
+        "name": "IHP SG13G2 MPW tapeout",
+        "description": "Covers MPW tapeout costs at the IHP foundry following design completion and sign-off (March 2026).",
         "amount": 5000,
         "currency": "USD",
-        "frequency": "yearly",
-        "channels": ["payment-provider"]
+        "frequency": "one-time",
+        "channels": [
+          "bank-transfer",
+          "upi"
+        ]
+      },
+      {
+        "guid": "die-assembly-packaging",
+        "status": "active",
+        "name": "Die assembly and packaging",
+        "description": "Covers die assembly, packaging and handling required for post-silicon validation (October 2026).",
+        "amount": 3000,
+        "currency": "USD",
+        "frequency": "one-time",
+        "channels": [
+          "bank-transfer",
+          "upi"
+        ]
+      },
+      {
+        "guid": "rf-testing-crpa-validation",
+        "status": "active",
+        "name": "RF testing and CRPA validation",
+        "description": "Covers RF probe access, measurement setup, test boards and final CRPA / beamforming system validation (October–December 2026).",
+        "amount": 4000,
+        "currency": "USD",
+        "frequency": "one-time",
+        "channels": [
+          "bank-transfer",
+          "upi"
+        ]
       }
     ],
 
     "history": [
       {
-        "year": 2024,
+        "year": 2025,
         "income": 0,
         "expenses": 0,
         "taxes": 0,
         "currency": "USD",
-        "description": "Initial development conducted voluntarily without external funding."
+        "description": "Early-stage research and development phase. No external funding till now."
       }
     ]
   }

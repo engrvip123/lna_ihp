@@ -1,4 +1,4 @@
-# Open-Source Phase-Programmable LNA (PP-LNA) for NAVIC L5 Beamforming
+# Open-Source Phase-Programmable LNA semiconductor chip design for GNSS Beamforming 
 
 ## What this project is
 This project is an **open-source RF IC reference design**: a **Phase-Programmable Low-Noise Amplifier (PP-LNA)** for **GNSS navigation applications**, implemented using the **IHP SG13G2 open PDK** and **open-source EDA software**.
