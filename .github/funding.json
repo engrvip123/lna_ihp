@@ -71,7 +71,7 @@
         "status": "active",
         "name": "IHP SG13G2 MPW tapeout",
         "description": "Covers MPW tapeout costs at the IHP foundry following design completion and sign-off (March 2026).",
-        "amount": 5000,
+        "amount": 6000,
         "currency": "USD",
         "frequency": "one-time",
         "channels": [
