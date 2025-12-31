@@ -1,0 +1,108 @@
+{
+  "$schema": "https://fundingjson.org/schema/v1.1.0.json",
+  "version": "v1.1.0",
+
+  "entity": {
+    "type": "individual",
+    "role": "maintainer",
+    "name": "Vipul Sharma",
+    "email": "REPLACE_WITH_EMAIL",
+    "phone": "REPLACE_OPTIONALLY",
+    "description": "Independent analog/mixed-signal IC designer working on open-source RF building blocks, tools, and education. Focused on enabling students, researchers, and startups to design real silicon using open PDKs and free EDA tooling.",
+    "webpageUrl": {
+      "url": "https://REPLACE_WITH_PROFILE_OR_SITE",
+      "wellKnown": ""
+    }
+  },
+
+  "projects": [
+    {
+      "guid": "navic-pp-lna",
+      "name": "Open-Source Phase-Programmable LNA for NAVIC L5",
+      "description": "An open-source low-noise amplifier with programmable RF phase control, designed using the IHP SG13G2 open PDK. Intended for NAVIC L5 GNSS beamforming (anti-jamming/anti-spoofing CRPA systems). The project demonstrates how open EDA tools and open PDKs can enable high-performance RF IC design for education, research, and startups — without restrictive licenses.",
+      "webpageUrl": {
+        "url": "https://REPLACE_WITH_PROJECT_PAGE",
+        "wellKnown": ""
+      },
+      "repositoryUrl": {
+        "url": "https://REPLACE_WITH_REPO_URL",
+        "wellKnown": ""
+      },
+      "licenses": [
+        "spdx:Apache-2.0"
+      ],
+      "tags": [
+        "hardware",
+        "rf",
+        "analog",
+        "gnss",
+        "navic",
+        "lna",
+        "open-pdk",
+        "eda-tools"
+      ]
+    }
+  ],
+
+  "funding": {
+    "channels": [
+      {
+        "guid": "bank-transfer",
+        "type": "bank",
+        "address": "REPLACE_WITH_BANK_DETAILS_OR_INTERMEDIARY",
+        "description": "Primary channel for grants and larger transfers."
+      },
+      {
+        "guid": "payment-provider",
+        "type": "payment-provider",
+        "address": "https://REPLACE_WITH_DONATION_LINK",
+        "description": "Online contributions and smaller payments."
+      }
+    ],
+
+    "plans": [
+      {
+        "guid": "documentation-and-training",
+        "status": "active",
+        "name": "Documentation, tutorials, and student onboarding",
+        "description": "Complete beginner-friendly docs, examples, and training material showing how to design RF chips using open PDKs and tools — using this LNA as a reference design.",
+        "amount": 15000,
+        "currency": "USD",
+        "frequency": "one-time",
+        "channels": ["bank-transfer", "payment-provider"]
+      },
+      {
+        "guid": "core-design-and-validation",
+        "status": "active",
+        "name": "Design completion, simulations, and verification",
+        "description": "Finalize LNA architecture, phase-shifter integration, EM/layout verification, test benches, and reproducible open flows.",
+        "amount": 35000,
+        "currency": "USD",
+        "frequency": "one-time",
+        "channels": ["bank-transfer"]
+      },
+      {
+        "guid": "community-support",
+        "status": "active",
+        "name": "Community support & maintenance",
+        "description": "Ongoing bug fixes, updates, mentoring, and responding to issues so the project remains usable for others.",
+        "amount": 5000,
+        "currency": "USD",
+        "frequency": "yearly",
+        "channels": ["payment-provider"]
+      }
+    ],
+
+    "history": [
+      {
+        "year": 2024,
+        "income": 0,
+        "expenses": 0,
+        "taxes": 0,
+        "currency": "USD",
+        "description": "Initial development conducted voluntarily without external funding."
+      }
+    ]
+  }
+}
+

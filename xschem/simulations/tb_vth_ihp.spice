@@ -1,0 +1,111 @@
+** sch_path: /home/ic_design_trg/OpenSourceTool_Examples/tb_vth_ihp/tb_vth_ihp.sch
+**.subckt tb_vth_ihp
+XM1 vd_nmos_lv vg_nmos_lv vssa vssa sg13_lv_nmos w=10u l=2u ng=1 m=2
+V1 vssa GND 3
+Vvg_nmos_lv vg_nmos_lv vssa xvg_nmos_lv
+Vvd_nmos_lv vd_nmos_lv vssa xvd_nmos_lv
+XM2 vd_nmos_hv vg_nmos_hv vssa vssa sg13_hv_nmos w=10u l=2u ng=1 m=2
+Vvdda_lv vdda_lv vssa xvdda_lv
+Vvdda_hv vdda_hv vssa xvdda_hv
+XM3 vd_pmos_lv vg_pmos_lv vdda_lv vdda_lv sg13_lv_pmos w=10u l=2u ng=1 m=2
+Vvg_pmos_lv vg_pmos_lv vssa xvg_pmos_lv
+Vvd_pmos_lv vd_pmos_lv vssa xvd_pmos_lv
+Vvg_pmos_hv vg_pmos_hv vssa xvg_pmos_hv
+Vvd_pmos_hv vd_pmos_hv vssa xvd_pmos_hv
+XM4 vd_pmos_hv vg_pmos_hv vdda_hv vdda_hv sg13_hv_pmos w=10u l=2u ng=1 m=2
+Vvg_nmos_hv vg_nmos_hv vssa xvg_nmos_hv
+Vvd_nmos_hv vd_nmos_hv vssa xvd_nmos_hv
+**** begin user architecture code
+
+** opencircuitdesign pdks install
+.lib /home/slice/pdk/iHP/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/cornerMOSlv.lib mos_tt
+.lib /home/slice/pdk/iHP/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/cornerMOShv.lib mos_tt
+.lib /home/slice/pdk/iHP/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/cornerRES.lib res_typ
+.include /home/slice/pdk/iHP/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/diodes.lib
+
+
+* Parameters
+.param xvg_nmos_lv = 0.4
+.param xvd_nmos_lv = 0.35
+.param xvg_nmos_hv = 0.79
+.param xvd_nmos_hv = 0.35
+.param xvdda_hv = 3.3
+.csparam xvdda_hv_var = 'xvdda_hv'
+.param xvdda_lv = 1.65
+.csparam xvdda_lv_var = 'xvdda_lv'
+.param xvg_pmos_lv = 1.1
+.param xvg_pmos_hv = 2.414
+.param xvd_pmos_lv = 1.3
+.param xvd_pmos_hv = 2.95
+.param xtsim = 5u
+.csparam xtsim_var = 'xtsim'
+.param xstep_en = 1
+.temp 27
+
+
+  ** must save the below for DCOP analysis to be back annotated onto the schematic
+  .option savecurrents
+
+  .include tb_vth_ihp.save
+
+  *.save all
+  .save v(vd_nmos) v(vg_nmos)
+  .save @n.xm1.nsg13_lv_nmos[ids] @n.xm2.nsg13_hv_nmos[ids] @n.xm3.nsg13_lv_pmos[ids] @n.xm4.nsg13_hv_pmos[ids]
+
+  .control
+
+    *set xTj = ( -40 -30 -20 -10 0 10 20 30 40 50 60 70 80 90 100 110 120 130 )
+    set xTj = ( 27 )
+    foreach xTj_var $xTj
+
+    let Tj_meas = $xTj_var
+
+    echo temperature is "$&Tj_meas"
+
+    set temp = $xTj_var
+
+
+** 1. DCOP ANALYSIS **
+
+  op
+  *set filetype=ascii
+  remzerovec
+  write tb_vth_ihp_op.raw
+  echo "$&Tj_meas" >> vth_measures_T.txt
+  let vth_meas_nmoslv = @n.xm1.nsg13_lv_nmos[vth]
+  echo "$&vth_meas_nmoslv" >> vth_measures_nmoslv_tt.txt
+  let vth_meas_nmoshv = @n.xm2.nsg13_hv_nmos[vth]
+  echo "$&vth_meas_nmoshv" >> vth_measures_nmoshv_tt.txt
+  let vth_meas_pmoslv = @n.xm3.nsg13_lv_pmos[vth]
+  echo "$&vth_meas_pmoslv" >> vth_measures_pmoslv_tt.txt
+  let vth_meas_pmoshv = @n.xm4.nsg13_hv_pmos[vth]
+  echo "$&vth_meas_pmoshv" >> vth_measures_pmoshv_tt.txt
+
+ ** 2. DC ANALYSIS **
+
+  dc Vvd_nmos_lv 0 $&xvdda_lv_var 10m
+  remzerovec
+  write tb_vth_ihp_nmoslv_dc.raw
+  dc Vvd_nmos_hv 0 $&xvdda_hv_var 10m
+  remzerovec
+  write tb_vth_ihp_nmoshv_dc.raw
+  dc Vvd_pmos_lv 0 $&xvdda_lv_var 10m
+  remzerovec
+  write tb_vth_ihp_pmoslv_dc.raw
+  dc Vvd_pmos_hv 0 $&xvdda_hv_var 10m
+  remzerovec
+  write tb_vth_ihp_pmoshv_dc.raw
+
+  end
+
+  setplot
+quit 0
+.endc
+
+
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

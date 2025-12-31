@@ -1,6 +1,6 @@
 <Qucs Schematic 25.2.0>
 <Properties>
-  <View=-3567,-771,480,1100,0.423968,191,55>
+  <View=-6054,-1331,2776,2225,1.2216,6512,1817>
   <Grid=10,10,1>
   <DataSet=lna.dat>
   <DataDisplay=lna.dpl>
@@ -27,19 +27,21 @@
   <Pac P2 1 530 290 18 -26 0 1 "2" 1 "50 Ohm" 1 "0 dBm" 0 "1 MHz" 0 "26.85" 0 "true" 0>
   <GND * 1 530 330 0 0 0 0>
   <NutmegEq NutmegEq3 1 -360 920 -28 16 0 0 "SP1" 1 "db_s11=dB(S_1_1)" 1 "db_s21=dB(S_2_1)" 1 "db_s12=dB(S_1_2)" 1 "db_s22=dB(S_2_2)" 1>
-  <NutmegEq NutmegEq4 1 -620 920 -28 16 0 0 "SP1" 1 "db_nf=dB(nf)" 1 "db_nfmin=dB(nfmin)" 1>
+  <NutmegEq NutmegEq4 0 -620 920 -28 16 0 0 "SP1" 1 "db_nf=dB(nf)" 1 "db_nfmin=dB(nfmin)" 1>
   <INDQ LQ1 1 250 110 -65 -26 0 3 "5 nH" 1 "10" 1 "1100 MHz" 1 "Linear" 1 "26.85" 0>
   <C C2 1 -170 380 -26 17 0 0 "20 pF" 1 "" 0 "neutral" 0>
   <.SP SP1 1 -540 470 0 49 0 0 "log" 1 "1 MHz" 1 "10 GHz" 1 "200" 1 "yes" 0 "1" 0 "2" 0 "yes" 0 "yes" 0>
   <C C3 0 360 90 17 -26 0 1 "4 pF" 1 "" 0 "neutral" 0>
   <INCLSCR INCLSCR1 1 -680 -410 -60 16 0 0 ".LIB cornerMOSlv.lib mos_tt\n\n.save all @n.Xsg13_lv_nmos1.x1.nsg13_lv_nmos[gm]\n.save all @n.Xsg13_lv_nmos1.x1.nsg13_lv_nmos[gds]\n.save all @n.Xsg13_lv_nmos1.x1.nsg13_lv_nmos[cgs]\n.save all @n.Xsg13_lv_nmos1.x1.nsg13_lv_nmos[cgd]\n.save all @n.Xsg13_lv_nmos1.x1.nsg13_lv_nmos[cdb]\n.save all @n.Xsg13_lv_nmos1.x1.nsg13_lv_nmos[vth]\n.save all @n.Xsg13_lv_nmos1.x1.nsg13_lv_nmos[vgs]\n.save all @n.Xsg13_lv_nmos1.x1.nsg13_lv_nmos[ids]\n" 1 "" 0 "" 0>
   <NutmegEq NutmegEq5 1 -220 -390 -30 18 0 0 "ALL" 1 "mos_gm=@n.Xsg13_lv_nmos1.x1.nsg13_lv_nmos[gm]" 1 "mos_gds=@n.Xsg13_lv_nmos1.x1.nsg13_lv_nmos[gds]" 1 "mos_cgs=@n.Xsg13_lv_nmos1.x1.nsg13_lv_nmos[cgs]" 1 "mos_cgd=@n.Xsg13_lv_nmos1.x1.nsg13_lv_nmos[cgd]" 1 "mos_cdb=@n.Xsg13_lv_nmos1.x1.nsg13_lv_nmos[cdb]" 1 "mos_vth=@n.Xsg13_lv_nmos1.x1.nsg13_lv_nmos[vth]" 1 "mos_vgs=@n.Xsg13_lv_nmos1.x1.nsg13_lv_nmos[vgs]" 1 "mos_ids=@n.Xsg13_lv_nmos1.x1.nsg13_lv_nmos[ids]" 1>
-  <INDQ LQ3 1 250 480 -65 -26 0 3 "0.5 nH" 1 "5" 1 "1100 MHz" 1 "Linear" 0 "26.85" 0>
   <Lib sg13_lv_nmos1 1 250 380 50 -20 0 0 "/home/ic_design_trg/QucsWorkspace/user_lib/IHP_PDK_nonlinear_components" 0 "sg13_lv_nmos" 0 "300u" 1 "0.18u" 1 "1" 1 "1" 1 "1" 1 "0" 0 "0" 0 "0" 0 "0" 0 "0" 0 "0.34e-6" 0 "0.38e-6" 0 "0.15e-6" 0 "0" 0 "1" 0>
   <INDQ LQ2 1 110 380 -26 17 0 0 "20 nH" 1 "10" 1 "1100 MHz" 1 "Linear" 1 "26.85" 0>
   <Lib sg13_lv_nmos2 1 250 250 50 -20 0 0 "/home/ic_design_trg/QucsWorkspace/user_lib/IHP_PDK_nonlinear_components" 0 "sg13_lv_nmos" 0 "300u" 1 "0.18u" 1 "1" 1 "1" 1 "1" 1 "0" 0 "0" 0 "0" 0 "0" 0 "0" 0 "0.34e-6" 0 "0.38e-6" 0 "0.15e-6" 0 "0" 0 "1" 0>
   <Vdc V2 1 -40 500 18 -26 0 1 "0.6 V" 1>
-  <C C1 1 410 180 -26 17 0 0 "2 pF" 1 "" 0 "neutral" 0>
+  <C C1 1 410 180 -26 17 0 0 "5 pF" 1 "" 0 "neutral" 0>
+  <INDQ LQ3 0 520 520 -65 -26 0 3 "0.5 nH" 1 "5" 1 "1100 MHz" 1 "Linear" 0 "26.85" 0>
+  <GND * 1 220 480 0 0 0 3>
+  <SPfile X1 1 250 480 21 -26 0 3 "/home/ic_design_trg/pdk/ihp-sg13g2/libs.tech/openems/openems_ihp_sg13g2/workflow/output/run_inductor_2port_data/run_inductor_2port.s2p" 1 "rectangular" 0 "linear" 0 "short" 0 "2" 0>
 </Components>
 <Wires>
   <250 280 250 350 "" 0 0 0 "">
@@ -80,7 +82,7 @@
 <Diagrams>
   <Rect -1886 318 930 679 3 #c0c0c0 1 00 1 0 5e+08 1e+10 1 -209.981 20 29.2276 1 -1 0.2 1 315 0 225 1 0 0 "" "" "">
 	<"ngspice/ac.db_s21" #0000ff 1 3 0 0 0>
-	  <Mkr 1.09648e+09 -2 -733 3 0 0>
+	  <Mkr 1.14815e+09 -2 -733 3 0 0>
 	<"ngspice/ac.db_s11" #ff0000 1 3 0 0 0>
 	  <Mkr 1.38038e+09 444 -601 3 0 0>
 	<"ngspice/ac.db_s12" #ff00ff 1 3 0 0 0>

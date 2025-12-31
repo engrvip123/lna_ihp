@@ -17,6 +17,19 @@ XM1 net1 G GND GND sg13_lv_nmos w='wid' l=0.45u ng=1 m=1
 
 .control
 save all
+save @n.xm1.nsg13_lv_nmos[vgs]
+save @n.xm1.nsg13_lv_nmos[vds]
+save @n.xm1.nsg13_lv_nmos[gm]
+save @n.xm1.nsg13_lv_nmos[gds]
+save @n.xm1.nsg13_lv_nmos[vth]
+save @n.xm1.nsg13_lv_nmos[cgg]
+save @n.xm1.nsg13_lv_nmos[cgd]
+save @n.xm1.nsg13_lv_nmos[cgdol]
+save @n.xm1.nsg13_lv_nmos[cgsol]
+save @n.xm1.nsg13_lv_nmos[vdss]
+save @n.xm1.nsg13_lv_nmos[vdsat]
+
+
 op
 write test_dcsweep.raw
 set appendwrite

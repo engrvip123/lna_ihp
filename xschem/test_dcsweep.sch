@@ -117,6 +117,19 @@ value="
 
 .control
 save all
+save @n.xm1.nsg13_lv_nmos[vgs]
+save @n.xm1.nsg13_lv_nmos[vds]
+save @n.xm1.nsg13_lv_nmos[gm]
+save @n.xm1.nsg13_lv_nmos[gds]
+save @n.xm1.nsg13_lv_nmos[vth]
+save @n.xm1.nsg13_lv_nmos[cgg]
+save @n.xm1.nsg13_lv_nmos[cgd]
+save @n.xm1.nsg13_lv_nmos[cgdol]
+save @n.xm1.nsg13_lv_nmos[cgsol]
+save @n.xm1.nsg13_lv_nmos[vdss]
+save @n.xm1.nsg13_lv_nmos[vdsat]
+
+
 op
 write test_dcsweep.raw
 set appendwrite
@@ -146,4 +159,27 @@ write test_dcsweep.raw
 .endc
 
 "
+}
+C {ngspice_get_value.sym} 780 -730 0 0 {name=r1 node=@n.xm1.nsg13_lv_nmos[gm]
+descr="gm="
+}
+C {ngspice_get_value.sym} 780 -690 0 0 {name=r2 node=@n.xm1.nsg13_lv_nmos[cgg]
+descr="cgg="
+}
+C {ngspice_get_value.sym} 780 -850 0 0 {name=r3 node=v(@n.xm1.nsg13_lv_nmos[vdsat])
+descr="vdsat="
+}
+C {ngspice_get_value.sym} 780 -770 0 0 {name=r4 node=v(@n.xm1.nsg13_lv_nmos[vds])
+descr="vds="
+}
+C {ngspice_get_value.sym} 780 -810 0 0 {name=r5 node=v(@n.xm1.nsg13_lv_nmos[vgs])
+descr="vgs="
+}
+C {ngspice_get_value.sym} 780 -650 0 0 {name=r6 node=@n.xm1.nsg13_lv_nmos[cgd]
+descr="cgd="
+}
+C {ngspice_get_value.sym} 780 -890 0 0 {name=r7 node=@n.xm1.nsg13_lv_nmos[gds]
+descr="gds="}
+C {ngspice_get_value.sym} 850 -810 0 0 {name=r8 node=v(@n.xm1.nsg13_lv_nmos[vth])
+descr="vth="
 }
