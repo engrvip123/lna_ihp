@@ -34,7 +34,7 @@ This changes who can design chips:
 
 ![Open-source vs commercial EDA](images/opensource_vs_commercial_eda.png)
 
-This project exists because **that ecosystem now makes RF IC design possible in the open**.
+This project exists because **open-source ecosystem now makes RF IC design possible in the open**.
 
 ---
 
