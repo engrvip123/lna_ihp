@@ -48,7 +48,7 @@
       {
         "guid": "upi",
         "type": "payment-provider",
-        "address": "UPI ID available on request",
+        "address": "engrvip123@icici",
         "description": "UPI payments via GPay, PhonePe, Paytm"
       }
     ],
