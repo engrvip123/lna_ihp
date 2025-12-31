@@ -1,31 +1,26 @@
 {
-  "$schema": "https://fundingjson.org/schema/v1.1.0.json",
   "version": "v1.1.0",
-
   "entity": {
     "type": "individual",
     "role": "maintainer",
     "name": "Vipul Sharma",
     "email": "engr.vipul@gmail.com",
+    "phone": "",
     "description": "Analog/RF IC designer and open-source silicon contributor, founder of NAVIA-LABS. Focused on reproducible RFIC design using open PDKs and open-source EDA tools. Maintains and develops open-source, silicon-intended reference designs for education, research, and GNSS resilience.",
     "webpageUrl": {
-      "url": "https://www.linkedin.com/in/vipul-k-sharma",
-      "wellKnown": ""
+      "url": "https://www.linkedin.com/in/vipul-k-sharma"
     }
   },
-
   "projects": [
     {
       "guid": "pp-lna-gnss",
       "name": "Open-Source Phase-Programmable LNA Semiconductor Chip for GNSS Beamforming",
       "description": "An open-source RFIC design of a Phase-Programmable Low-Noise Amplifier (PP-LNA) for GNSS receivers, targeting CRPA beamforming, anti-jamming, and anti-spoofing applications. Implemented using the IHP SG13G2 open PDK and a fully open-source EDA flow, enabling end-to-end, silicon-backed RFIC development without proprietary tools.",
       "webpageUrl": {
-        "url": "https://github.com/engrvip123/lna_ihp",
-        "wellKnown": ""
+        "url": "https://github.com/engrvip123/lna_ihp"
       },
       "repositoryUrl": {
-        "url": "https://github.com/engrvip123/lna_ihp",
-        "wellKnown": ""
+        "url": "https://github.com/engrvip123/lna_ihp"
       },
       "licenses": [
         "spdx:CERN-OHL-S-2.0"
@@ -42,7 +37,6 @@
       ]
     }
   ],
-
   "funding": {
     "channels": [
       {
@@ -58,10 +52,9 @@
         "description": "UPI payments via GPay, PhonePe, Paytm"
       }
     ],
-
     "plans": [
       {
-        "guid": "Engineering effort 12 months",
+        "guid": "engineering-effort-12-months",
         "status": "active",
         "name": "Engineering effort (12 months)",
         "description": "Covers 12 months of design, simulation, EM verification, layout, documentation and reproducible open-source release of the Phase-Programmable LNA.",
@@ -103,7 +96,7 @@
         "guid": "rf-testing-crpa-validation",
         "status": "active",
         "name": "RF testing and CRPA validation",
-        "description": "Covers RF probe access, measurement setup, test boards and final CRPA / beamforming system validation (October–December 2026).",
+        "description": "Covers RF probe access, measurement setup, test boards and final CRPA / beamforming system validation (October-December 2026).",
         "amount": 4000,
         "currency": "USD",
         "frequency": "one-time",
@@ -113,7 +106,6 @@
         ]
       }
     ],
-
     "history": [
       {
         "year": 2025,
@@ -126,4 +118,3 @@
     ]
   }
 }
-
