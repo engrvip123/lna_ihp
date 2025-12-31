@@ -1,7 +1,7 @@
 # Open-Source Phase-Programmable LNA (PP-LNA) for NAVIC L5 Beamforming
 
 ## What this project is
-This project is an **open-source RF IC reference design**: a **Phase-Programmable Low-Noise Amplifier (PP-LNA)** for **NAVIC L5 (1176.45 MHz) GNSS navigation applications, implemented using the **IHP SG13G2 open PDK** and **open-source EDA software**.
+This project is an **open-source RF IC reference design**: a **Phase-Programmable Low-Noise Amplifier (PP-LNA)** for **GNSS navigation applications**, implemented using the **IHP SG13G2 open PDK** and **open-source EDA software**.
 
 It demonstrates that **serious RF silicon** can be designed and reused **without proprietary tools or restricted foundry access**.
 
@@ -10,7 +10,7 @@ The goal is not just one chip, but a **reproducible, teachable and extensible RF
 ---
 
 ## Why open-source IC design matters (and why this exists)
-For decades, IC design has been inaccessible due to:
+For decades, IC or chip design has been inaccessible due to:
 
 - expensive licensed EDA tools  
 - closed, NDA-restricted PDKs  
@@ -57,20 +57,24 @@ A simple mental model:
 Without tools → no design.  
 Without a PDK → no fabrication.
 
+
+![Role of EDA-PDK in Chip design](images/eda_pdk_design.png)
+
 This project uses the **IHP SG13G2 open PDK** end-to-end with open-source tools to demonstrate that this combination is **practically viable for RF IC design**, not just digital examples.
 
 ---
 
 ## Open-source EDA tools used
-The project is developed **entirely using open-source EDA tools** together with the **IHP SG13G2 open PDK**. No proprietary or licensed tools are required.
+The project will be developed **using open-source EDA tools** together with the **IHP SG13G2 open PDK**. No proprietary or licensed tools are required.
 
 ### Schematic capture & circuit simulation
 - **xschem** – schematic capture and netlisting  
-- **ngspice** – DC/AC, transient, noise, and RF simulations  
+- **Qucs-s** – schematic capture and netlisting especially for RF
+- **ngspice** – DC/AC, transient, noise and RF simulations  
 - **Xyce** (optional) – large-scale and parallel simulations  
 
 ### Layout & physical verification
-- **KLayout** – full-custom RF/analog layout, DRC, LVS, and GDS editing  
+- **KLayout** – full-custom RF/analog layout, DRC, LVS and GDS editing  
 - **Netgen** – layout-vs-schematic (LVS) verification  
 
 ### Parasitic extraction & EM analysis
@@ -78,7 +82,7 @@ The project is developed **entirely using open-source EDA tools** together with 
 - **openEMS** – EM simulation of RF passives and interconnects  
 
 ### Flow automation & reproducibility
-- **Python-based workflows** – simulation automation, result extraction, and reproducibility  
+- **Python-based workflows** – simulation automation, result extraction and reproducibility  
 
 ### Why this matters
 All tools listed are **free, open-source and legally usable** with the IHP open PDK.  
@@ -89,32 +93,28 @@ This enables reproducible RF IC design without dependence on commercial EDA lice
 ## What is LNA 
 A **Low-Noise Amplifier (LNA)** is the **first active block after an antenna**.
 
-Its job is simple:
-
-> Amplify extremely weak signals while adding as little noise as possible.
+Its job is simple: Amplify extremely weak signals while adding as little noise as possible.
 
 If the LNA is poor, **no downstream processing can recover the RF wireless signal**.
 
 ### Everyday analogy
 Think of the **LNB on a satellite TV dish**.
 
-It amplifies a faint signal arriving from space before sending it down the cable.  
-If it adds noise or distortion, the TV sees garbage.
+It amplifies a faint signal arriving from space before sending it down the cable. If it adds noise or distortion, the TV sees garbage.
 
 This PP-LNA plays the same role — but for **satellite navigation signals**, where reliability and integrity are critical.
 
 ---
 
 ## Why GNSS signals need protection: jamming and spoofing
-GNSS signals (including NAVIC) are **extremely weak** at the Earth’s surface — often **below the thermal noise floor**.
+GNSS signals are **extremely weak** at the Earth’s surface — often **below the thermal noise floor**.
 
 This makes them vulnerable to:
 
 - **Jamming**: strong interference that overwhelms the receiver  
 - **Spoofing**: malicious signals that imitate GNSS transmissions and mislead the receiver  
 
-A single-antenna GNSS receiver has **no spatial awareness**.  
-It cannot distinguish between genuine satellite signals and interference arriving from another direction.
+A single-antenna GNSS receiver has **no spatial awareness**. It cannot distinguish between genuine satellite signals and interference arriving from another direction.
 
 As GNSS is increasingly used for **navigation, timing, aviation and autonomous systems**, resilience against these disruptions is essential.
 
@@ -147,8 +147,7 @@ The PP-LNA integrates:
 - a **low-noise CMOS LNA**  
 - a **programmable RF phase shifter**  
 
-Each antenna element uses one PP-LNA.  
-Phase alignment is performed **in RF**, and signals are combined **before** the receiver.
+Each antenna element uses one PP-LNA. Phase alignment is performed **in RF**, and signals are combined **before** the receiver.
 
 This enables **analog beamforming** without requiring multiple high-speed ADCs or complex digital back-ends.
 
