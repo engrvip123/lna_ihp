@@ -93,6 +93,8 @@ This enables reproducible RF IC design without dependence on commercial EDA lice
 ## What is LNA 
 A **Low-Noise Amplifier (LNA)** is the **first active block after an antenna**.
 
+![Role of EDA-PDK in Chip design](images/lna_usecase.png)
+
 Its job is simple: Amplify extremely weak signals while adding as little noise as possible.
 
 If the LNA is poor, **no downstream processing can recover the RF wireless signal**.
