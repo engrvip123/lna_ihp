@@ -15,7 +15,7 @@
     {
       "guid": "pp-lna-gnss",
       "name": "Open-Source Phase-Programmable LNA Semiconductor Chip for GNSS Beamforming",
-      "description": "An open-source RFIC design of a Phase-Programmable Low-Noise Amplifier (PP-LNA) for GNSS receivers, targeting CRPA beamforming, anti-jamming, and anti-spoofing applications. Implemented using the IHP SG13G2 open PDK and a fully open-source EDA flow, enabling end-to-end, silicon-backed RFIC development without proprietary tools.",
+      "description": "An open-source RFIC design of a Phase-Programmable Low-Noise Amplifier (PP-LNA) for GNSS receivers, targeting CRPA beamforming, anti-jamming, and anti-spoofing applications. Implemented using the IHP SG13G2 open PDK and a fully open-source EDA flow, enabling end-to-end, silicon-backed RFIC development without proprietary tools. Only a few foundries worldwide have opened their PDKs; IHP (Germany) is one of them, providing an affordable fabrication path built around an open-source EDA and PDK ecosystem.",
       "webpageUrl": {
         "url": "https://github.com/engrvip123/lna_ihp"
       },
@@ -118,3 +118,4 @@
     ]
   }
 }
+
