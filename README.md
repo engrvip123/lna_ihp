@@ -1,118 +1,195 @@
+# Open-Source Phase-Programmable LNA (PP-LNA) for NAVIC L5 Beamforming
 
-# **Open-Source Phase-Programmable LNA (PP-LNA) for NAVIC L5 Beamforming**
+## What this project is
+This project is an **open-source RF IC reference design**: a **Phase-Programmable Low-Noise Amplifier (PP-LNA)** for **NAVIC L5 (1176.45 MHz) GNSS navigation applications, implemented using the **IHP SG13G2 open PDK** and **open-source EDA software**.
 
-## 1️⃣ Open-Source IC Design — what it actually means
+It demonstrates that **serious RF silicon** can be designed and reused **without proprietary tools or restricted foundry access**.
 
-For decades, chip design was locked behind:
-
-* **expensive licensed EDA tools**
-* **closed PDKs and restricted foundry access**
-* **heavy NDAs and gatekeeping**
-
-![Chip Design Requirements](images/chip_infra.png)
-
-
-Open-source IC design breaks that wall.
-
-* **Open-source EDA tools** → free tools for schematic, simulation, layout, EM, verification
-* **Open PDKs** → openly documented transistor models and rules you can legally design with
-* **Community sharing** → anyone can learn, build, publish, and collaborate
-
-![Open-Source IC design breaks barriers](images/open_source_icdesign.png)
-
-Result: chip design is no longer only for big companies.
-Students, researchers, startups — even hobbyists — can design real silicon.
-
-![Comparison: Open-Source Vs Commercial EDA Software](images/opensource_vs_commercial_eda.png)
-
-This project exists because that ecosystem now makes it possible.
+The goal is not just one chip, but a **reproducible, teachable and extensible RFIC building block** for the open-source semiconductor ecosystem.
 
 ---
 
-## 2️⃣ How open EDA tools and PDKs work together
+## Why open-source IC design matters (and why this exists)
+For decades, IC design has been inaccessible due to:
 
-Think of a construction project:
+- expensive licensed EDA tools  
+- closed, NDA-restricted PDKs  
+- limited foundry access  
 
-* **PDK = building code + material specs**
-  (what devices exist, limits, models, rules)
+![Chip design barriers](images/chip_infra.png)
 
-* **EDA tools = architect + engineering software**
-  (draw circuits, simulate behavior, design layout, verify)
+Open-source IC design removes these barriers by combining:
 
-Without a PDK → you can’t fabricate.
-Without tools → you can’t design.
+- **Open-source EDA tools** → schematic, simulation, layout, EM, verification  
+- **Open PDKs** → legally usable transistor models and design rules  
+- **Open collaboration** → designs that anyone can study, modify, and reuse  
 
-Open-source provides both — legally, freely, and transparently.
-This design uses the **IHP SG13G2 open PDK** with open-source tools end-to-end.
+![Open-source IC design breaks barriers](images/open_source_icdesign.png)
+
+This changes who can design chips:
+
+- students can learn from *real* silicon designs  
+- researchers can publish reproducible hardware  
+- startups can prototype without expensive EDA tool licenses  
+
+![Open-source vs commercial EDA](images/opensource_vs_commercial_eda.png)
+
+This project exists because **that ecosystem now makes RF IC design possible in the open**.
 
 ---
 
-## 3️⃣ What is an LNA — and why you should care
+## How open EDA tools and PDKs work together
+A simple mental model:
 
-A **Low Noise Amplifier (LNA)** sits right after the antenna. Its job:
+### Role of the PDK
+- **PDK = building codes + materials**
+  - available devices  
+  - electrical behavior  
+  - layout and fabrication rules  
 
-> **Boost extremely weak signals while adding as little noise as possible.**
+### Role of EDA tools
+- **EDA tools = design and verification machinery**
+  - draw circuits  
+  - simulate performance  
+  - generate layout  
+  - verify correctness  
 
-If the LNA is noisy, everything downstream degrades — permanently.
+Without tools → no design.  
+Without a PDK → no fabrication.
 
-### Easy analogy
+This project uses the **IHP SG13G2 open PDK** end-to-end with open-source tools to demonstrate that this combination is **practically viable for RF IC design**, not just digital examples.
 
+---
+
+## Open-source EDA tools used
+The project is developed **entirely using open-source EDA tools** together with the **IHP SG13G2 open PDK**. No proprietary or licensed tools are required.
+
+### Schematic capture & circuit simulation
+- **xschem** – schematic capture and netlisting  
+- **ngspice** – DC/AC, transient, noise, and RF simulations  
+- **Xyce** (optional) – large-scale and parallel simulations  
+
+### Layout & physical verification
+- **KLayout** – full-custom RF/analog layout, DRC, LVS, and GDS editing  
+- **Netgen** – layout-vs-schematic (LVS) verification  
+
+### Parasitic extraction & EM analysis
+- **Magic** – layout inspection and parasitic extraction (where applicable)  
+- **openEMS** – EM simulation of RF passives and interconnects  
+
+### Flow automation & reproducibility
+- **Python-based workflows** – simulation automation, result extraction, and reproducibility  
+
+### Why this matters
+All tools listed are **free, open-source and legally usable** with the IHP open PDK.  
+This enables reproducible RF IC design without dependence on commercial EDA licenses.
+
+---
+
+## What is LNA 
+A **Low-Noise Amplifier (LNA)** is the **first active block after an antenna**.
+
+Its job is simple:
+
+> Amplify extremely weak signals while adding as little noise as possible.
+
+If the LNA is poor, **no downstream processing can recover the RF wireless signal**.
+
+### Everyday analogy
 Think of the **LNB on a satellite TV dish**.
-It grabs a faint signal from space and strengthens it before it travels through the cable.
-If it were noisy, your TV would be useless.
 
-This LNA plays a similar role — but for **satellite navigation signals**.
+It amplifies a faint signal arriving from space before sending it down the cable.  
+If it adds noise or distortion, the TV sees garbage.
 
----
-
-## 4️⃣ What this open-source project delivers
-
-This PP-LNA targets **NAVIC GNSS (L5 band, 1176.45 MHz)** and is designed for:
-
-* anti-jamming
-* anti-spoofing
-* controlled reception (CRPA) antenna systems
-
-It integrates:
-
-* ✔️ a low-noise CMOS LNA
-* ✔️ a programmable RF phase shifter
-
-Multiple PP-LNAs (one per antenna element) can be phase-aligned and combined **in analog**, giving beamforming capability **without needing multiple ADC channels**.
+This PP-LNA plays the same role — but for **satellite navigation signals**, where reliability and integrity are critical.
 
 ---
 
-## 5️⃣ Architecture overview
+## Why GNSS signals need protection: jamming and spoofing
+GNSS signals (including NAVIC) are **extremely weak** at the Earth’s surface — often **below the thermal noise floor**.
 
-* One PP-LNA per antenna
-* RF phase control inside each path
-* External RF combiner (e.g., Wilkinson)
-* Standard NAVIC receiver chain remains unchanged
+This makes them vulnerable to:
 
----
+- **Jamming**: strong interference that overwhelms the receiver  
+- **Spoofing**: malicious signals that imitate GNSS transmissions and mislead the receiver  
 
-## 6️⃣ Documentation
+A single-antenna GNSS receiver has **no spatial awareness**.  
+It cannot distinguish between genuine satellite signals and interference arriving from another direction.
 
-See `docs/` for deeper details:
-
-* system motivation and overview
-* LNA architecture and design strategy
-* phase-shifter choices and placement
-* calibration and beamforming behavior
+As GNSS is increasingly used for **navigation, timing, aviation and autonomous systems**, resilience against these disruptions is essential.
 
 ---
 
-## 7️⃣ Current status
+## Why CRPA (Controlled Reception Pattern Antenna) is required
+CRPA systems use **multiple antennas** and **spatial processing** to counter jamming and spoofing.
 
-* [ ] LNA finalized
-* [ ] Phase shifter integration
-* [ ] System-level beamforming demonstration
+By controlling the relative phase of signals from each antenna, a CRPA system can:
+
+- form beams toward real satellites  
+- place spatial nulls toward jammers or spoofers  
+- improve signal integrity without changing satellite signals  
+
+To be effective, this spatial processing must occur **as early as possible** in the receiver chain.
+
+That is where this PP-LNA fits.
 
 ---
 
-## ⚠️ Disclaimer
+## What this open-source project delivers
+This design targets **NAVIC GNSS L5-band receivers** and supports:
 
-This is a **research / proof-of-concept** design — not a production IC.
+- anti-jamming  
+- anti-spoofing  
+- CRPA (beamforming) antenna systems  
 
+The PP-LNA integrates:
 
+- a **low-noise CMOS LNA**  
+- a **programmable RF phase shifter**  
 
+Each antenna element uses one PP-LNA.  
+Phase alignment is performed **in RF**, and signals are combined **before** the receiver.
+
+This enables **analog beamforming** without requiring multiple high-speed ADCs or complex digital back-ends.
+
+---
+
+## Architecture overview
+![PP-LNA architecture](images/pp-lna.jpg)
+
+- one PP-LNA per antenna element  
+- programmable RF phase control per path  
+- external RF combiner (e.g., Wilkinson)  
+- standard NAVIC receiver chain remains unchanged  
+
+This modular approach allows CRPA capability to be added **without redesigning the entire receiver**.
+
+---
+
+## Project timeline (planned)
+This is planned to be a **silicon-backed project**, not simulation-only work.
+
+### Milestones
+- **Design completion & sign-off**: March 2026  
+- **Tapeout at IHP foundry**: March 2026  
+- **Expected silicon delivery**: August–September 2026  
+- **Die assembly & packaging**: October 2026  
+- **Initial electrical & RF testing**: October 2026  
+- **Final CRPA / beamforming system testing**: December 2026  
+
+The objective is **end-to-end validation on fabricated silicon**, including spatial interference rejection.
+
+---
+
+## Why this matters to the open-source ecosystem
+This project provides:
+
+- a **reference RF/CRPA front-end** using an open PDK  
+- a **teaching platform** for RF, GNSS, and beamforming  
+- a **reproducible research baseline** for anti-jamming GNSS systems  
+- proof that open-source silicon can address real-world security problems  
+
+---
+
+## License and scope
+This is a **research / proof-of-concept** open-source design.
