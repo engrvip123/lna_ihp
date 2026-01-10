@@ -1,0 +1,41 @@
+** sch_path: /home/ic_design_trg/lna_ihp/xschem/phs_nmos_9thjan.sch
+**.subckt phs_nmos_9thjan rf_out
+*.iopin rf_out
+V6 b4 GND b4
+L8 rf_inp rf_out 2n m=1
+C10 rf_out n4 1.5p m=1
+V7 rf_inp GND DC 0 AC 1
+XM10 n4 b4 GND GND sg13_lv_nmos w=10u l=0.13u ng=1 m=10
+**** begin user architecture code
+ .lib cornerMOSlv.lib mos_tt
+
+
+
+.param temp=27
+.control
+save all
+save vp(rf_out)
+
+op
+write phs_nmos_9thjan.raw
+setappendwrite
+
+ac dec 1001 10e6 10e9
+meas ac ph_rfout FIND vp(rf_out) AT=1.1182G
+meas ac mag_rfout FIND vm(rf_out) AT=1.1182G
+write phs_nmos_9thjan.raw
+
+.endc
+
+
+
+
+
+.param
++ b4=1.8
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+.end

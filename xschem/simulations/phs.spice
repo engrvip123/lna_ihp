@@ -1,0 +1,60 @@
+** sch_path: /home/ic_design_trg/lna_ihp/xschem/phs.sch
+**.subckt phs rf_out
+*.iopin rf_out
+L1 rf_inp rf_out 6n m=1
+C1 rf_out n0 0.2p m=1
+C2 rf_out n1 0.4p m=1
+C3 rf_out n2 0.8p m=1
+C4 rf_out n3 1.6p m=1
+C5 rf_out n4 3.2p m=1
+V1 rf_inp GND DC 0 AC 1
+V2 b0 GND b0
+V3 b1 GND b1
+V4 b2 GND b2
+V5 b3 GND b3
+V6 b4 GND b4
+S3 n1 GND b1 GND SW1
+S4 n2 GND b2 GND SW1
+S5 n3 GND b3 GND SW1
+S6 n4 GND b4 GND SW1
+S1 n0 GND b0 GND SW1
+**** begin user architecture code
+ .lib cornerMOSlv.lib mos_tt
+
+
+
+.param temp=27
+.control
+save all
+save vp(rf_out)
+
+op
+write phs.raw
+setappendwrite
+
+ac dec 101 10e6 10e9
+meas ac ph_rfout FIND vp(rf_out) AT=1.17645G
+write phs.raw
+
+.endc
+
+
+
+
+.param
++ b0=1.20
++ b1=1.20
++ b2=1.20
++ b3=1.20
++ b4=1.20
+
+
+**** end user architecture code
+**.ends
+.GLOBAL GND
+**** begin user architecture code
+.MODEL SW1 SW
++ VT=0.9 VH=0.01
++ RON=0.01 ROFF=10G
+**** end user architecture code
+.end

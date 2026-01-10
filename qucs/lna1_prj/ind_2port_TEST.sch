@@ -1,6 +1,6 @@
 <Qucs Schematic 25.2.0>
 <Properties>
-  <View=-20,-238,1503,798,1,20,298>
+  <View=0,0,1503,779,1,0,0>
   <Grid=10,10,1>
   <DataSet=ind_2port.dat>
   <DataDisplay=ind_2port.dpl>
@@ -37,10 +37,6 @@
 	<"ngspice/ac.s_1_2" #ff0000 1 3 0 0 0>
 	<"ngspice/ac.s_2_1" #ff00ff 1 3 0 0 0>
 	<"ngspice/ac.s_2_2" #00ff00 1 3 0 0 0>
-  </Rect>
-  <Rect 950 620 240 160 3 #c0c0c0 1 00 1 0 2e+09 1e+10 1 -40 20 3.22031 1 -1 1 1 315 0 225 1 0 0 "" "" "">
-	<"ngspice/ac.db_s21" #ff00ff 0 3 0 0 0>
-	  <Mkr 2.39883e+09 80 -198 3 0 0>
   </Rect>
 </Diagrams>
 <Paintings>

@@ -1,32 +1,26 @@
 ** sch_path: /home/ic_design_trg/lna_ihp/xschem/test_dcsweep.sch
 **.subckt test_dcsweep
 Vgs G GND 'vg'
-Vds D GND 1.5
+Vds D GND 0.5
 Vd D net1 0
 .save i(vd)
-XM1 net1 G GND GND sg13_lv_nmos w='wid' l=0.45u ng=1 m=1
+XM1 net1 G GND GND sg13_lv_nmos w=5u l=0.25u ng=1 m=40
 **** begin user architecture code
  .lib cornerMOSlv.lib mos_tt
 
 
 
 
-*.include dc_lv_nmos.save
-.param temp=27 wid=1.0u vg=1.2
+.include ~/lna_ihp/xschem/simulations/test_dcsweep.save
+.param temp=27 wid=70.0u vg=0.45
 
 
 .control
 save all
-save @n.xm1.nsg13_lv_nmos[vgs]
 save @n.xm1.nsg13_lv_nmos[vds]
-save @n.xm1.nsg13_lv_nmos[gm]
 save @n.xm1.nsg13_lv_nmos[gds]
-save @n.xm1.nsg13_lv_nmos[vth]
-save @n.xm1.nsg13_lv_nmos[cgg]
+save @n.xm1.nsg13_lv_nmos[cgs]
 save @n.xm1.nsg13_lv_nmos[cgd]
-save @n.xm1.nsg13_lv_nmos[cgdol]
-save @n.xm1.nsg13_lv_nmos[cgsol]
-save @n.xm1.nsg13_lv_nmos[vdss]
 save @n.xm1.nsg13_lv_nmos[vdsat]
 
 
@@ -35,15 +29,19 @@ write test_dcsweep.raw
 set appendwrite
 
 * --- wid = 1u ---
-alterparam wid=1u
+*alterparam wid=1u
+alterparam vg=0.4
 reset
+op
+set appendwrite
 dc Vds 0 1.2 0.01
 write test_dcsweep.raw
 set appendwrite
 
 
 * --- wid = 10u ---
-alterparam wid=10u
+*alterparam wid=10u
+alterparam vg=0.5
 reset
 dc Vds 0 1.2 0.01
 write test_dcsweep.raw
@@ -51,7 +49,8 @@ set appendwrite
 
 
 * --- wid = 20u ---
-alterparam wid=20u
+*alterparam wid=20u
+alterparam vg=0.6
 reset
 dc Vds 0 1.2 0.01
 write test_dcsweep.raw

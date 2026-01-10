@@ -5,8 +5,8 @@ V {}
 S {}
 E {}
 B 2 1040 -960 1600 -660 {flags=graph
-y1=-2.4e-09
-y2=0.0061
+y1=-4.5e-10
+y2=0.072
 ypos1=0
 ypos2=2
 divy=5
@@ -26,6 +26,50 @@ logx=0
 logy=0
 sim_type=dc
 autoload=1}
+B 2 1020 -1410 1820 -1010 {flags=graph
+y1=-4.3e-09
+y2=0.47
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=0
+x2=1.2
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+node="@n.xm1.nsg13_lv_nmos[gm]%0
+@n.xm1.nsg13_lv_nmos[gm]%1
+@n.xm1.nsg13_lv_nmos[gm]%2"
+color="4 7 10"
+dataset=-1
+unitx=1
+logx=0
+logy=0
+autoload=0
+legend=1}
+B 2 1640 -960 2440 -560 {flags=graph
+y1=2.6e-13
+y2=7.8e-13
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=0
+x2=1.2
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color=9
+node=@n.xm1.nsg13_lv_nmos[cgg]}
 T {Ctrl-Click to execute launcher} 1180 -640 0 0 0.3 0.3 {layer=11}
 T {.save file can be created with IHP->"Create FET and BIP .save file"} 1180 -520 0 0 0.3 0.3 {layer=11}
 N 780 -470 780 -450 {
@@ -50,7 +94,7 @@ N 1000 -650 1040 -650 {
 lab=D}
 N 780 -560 870 -560 {
 lab=G}
-C {devices/code_shown.sym} 530 -410 0 0 {name=MODEL only_toplevel=true
+C {devices/code_shown.sym} 380 -290 0 0 {name=MODEL only_toplevel=true
 format="tcleval( @value )"
 value=".lib cornerMOSlv.lib mos_tt
 "
@@ -58,10 +102,9 @@ value=".lib cornerMOSlv.lib mos_tt
 C {devices/gnd.sym} 910 -470 0 0 {name=l1 lab=GND}
 C {devices/gnd.sym} 780 -450 0 0 {name=l2 lab=GND}
 C {devices/vsource.sym} 780 -500 0 0 {name=Vgs value='vg'}
-C {devices/vsource.sym} 1040 -560 0 0 {name=Vds value=1.5}
+C {devices/vsource.sym} 1040 -560 0 0 {name=Vds value=0.5}
 C {devices/gnd.sym} 1040 -470 0 0 {name=l3 lab=GND}
 C {devices/gnd.sym} 980 -470 0 0 {name=l4 lab=GND}
-C {devices/title.sym} 690 -340 0 0 {name=l5 author="Copyright 2023 IHP PDK Authors"}
 C {devices/ammeter.sym} 970 -650 1 0 {name=Vd}
 C {lab_pin.sym} 780 -560 0 0 {name=p1 sig_type=std_logic lab=G}
 C {lab_pin.sym} 1040 -650 0 1 {name=p2 sig_type=std_logic lab=D}
@@ -70,14 +113,14 @@ descr="OP annotate"
 tclcommand="xschem annotate_op"
 }
 C {sg13g2_pr/sg13_lv_nmos.sym} 890 -560 0 0 {name=M1
-l=0.45u
-w='wid'
+l=0.25u
+w=5u
 ng=1
-m=1
+m=40
 model=sg13_lv_nmos
 spiceprefix=X
 }
-C {devices/launcher.sym} 1250 -540 0 0 {name=h2
+C {devices/launcher.sym} 1240 -540 0 0 {name=h2
 descr="Load waves" 
 tclcommand="
 xschem raw_read $netlist_dir/[file rootname [file tail [xschem get current_name]]].raw dc
@@ -108,25 +151,19 @@ write_data [save_params] $netlist_dir/[file rootname [file tail [xschem get curr
 xschem netlist
 simulate
 "}
-C {devices/code_shown.sym} 200 -930 0 0 {name=NGSPICE1 only_toplevel=true 
+C {devices/code_shown.sym} 80 -1040 0 0 {name=NGSPICE1 only_toplevel=true 
 value="
 
-*.include dc_lv_nmos.save
-.param temp=27 wid=1.0u vg=1.2
+.include ~/lna_ihp/xschem/simulations/test_dcsweep.save
+.param temp=27 wid=70.0u vg=0.45
 
 
 .control
 save all
-save @n.xm1.nsg13_lv_nmos[vgs]
 save @n.xm1.nsg13_lv_nmos[vds]
-save @n.xm1.nsg13_lv_nmos[gm]
 save @n.xm1.nsg13_lv_nmos[gds]
-save @n.xm1.nsg13_lv_nmos[vth]
-save @n.xm1.nsg13_lv_nmos[cgg]
+save @n.xm1.nsg13_lv_nmos[cgs]
 save @n.xm1.nsg13_lv_nmos[cgd]
-save @n.xm1.nsg13_lv_nmos[cgdol]
-save @n.xm1.nsg13_lv_nmos[cgsol]
-save @n.xm1.nsg13_lv_nmos[vdss]
 save @n.xm1.nsg13_lv_nmos[vdsat]
 
 
@@ -135,15 +172,19 @@ write test_dcsweep.raw
 set appendwrite
 
 * --- wid = 1u ---
-alterparam wid=1u
+*alterparam wid=1u
+alterparam vg=0.4
 reset
+op
+set appendwrite
 dc Vds 0 1.2 0.01 
 write test_dcsweep.raw
 set appendwrite
 
 
 * --- wid = 10u ---
-alterparam wid=10u
+*alterparam wid=10u
+alterparam vg=0.5
 reset
 dc Vds 0 1.2 0.01 
 write test_dcsweep.raw
@@ -151,7 +192,8 @@ set appendwrite
 
 
 * --- wid = 20u ---
-alterparam wid=20u
+*alterparam wid=20u
+alterparam vg=0.6
 reset
 dc Vds 0 1.2 0.01 
 write test_dcsweep.raw
@@ -160,26 +202,14 @@ write test_dcsweep.raw
 
 "
 }
-C {ngspice_get_value.sym} 780 -730 0 0 {name=r1 node=@n.xm1.nsg13_lv_nmos[gm]
-descr="gm="
-}
-C {ngspice_get_value.sym} 780 -690 0 0 {name=r2 node=@n.xm1.nsg13_lv_nmos[cgg]
-descr="cgg="
-}
-C {ngspice_get_value.sym} 780 -850 0 0 {name=r3 node=v(@n.xm1.nsg13_lv_nmos[vdsat])
+C {ngspice_get_value.sym} 870 -730 0 0 {name=r3 node=v(@n.xm1.nsg13_lv_nmos[vdsat])
 descr="vdsat="
 }
-C {ngspice_get_value.sym} 780 -770 0 0 {name=r4 node=v(@n.xm1.nsg13_lv_nmos[vds])
-descr="vds="
-}
-C {ngspice_get_value.sym} 780 -810 0 0 {name=r5 node=v(@n.xm1.nsg13_lv_nmos[vgs])
-descr="vgs="
-}
-C {ngspice_get_value.sym} 780 -650 0 0 {name=r6 node=@n.xm1.nsg13_lv_nmos[cgd]
+C {ngspice_get_value.sym} 870 -770 0 0 {name=r6 node=@n.xm1.nsg13_lv_nmos[cgd]
 descr="cgd="
 }
-C {ngspice_get_value.sym} 780 -890 0 0 {name=r7 node=@n.xm1.nsg13_lv_nmos[gds]
-descr="gds="}
-C {ngspice_get_value.sym} 850 -810 0 0 {name=r8 node=v(@n.xm1.nsg13_lv_nmos[vth])
-descr="vth="
+C {ngspice_get_value.sym} 870 -810 0 0 {name=r9 node=@n.xm1.nsg13_lv_nmos[cgs]
+descr="cgs="
 }
+C {sg13g2_pr/annotate_fet_params.sym} 870 -970 0 0 {name=annot1 ref=M1}
+C {title.sym} 170 -130 0 0 {name=l6 author="Vipul Sharma"}

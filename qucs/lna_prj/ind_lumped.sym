@@ -1,0 +1,12 @@
+<Qucs Schematic 25.2.0>
+<Symbol>
+  <.ID -20 14 SUB "1=Lseries=1==" "1=Rseries=1==" "1=Cshunt1=1==" "1=Cshunt2=1==" "1=Rshunt1=1==" "1=Rshunt2=1==">
+  <.PortSym -30 0 1 0 P1>
+  <.PortSym 30 0 2 180 P2>
+  <Line -30 0 10 0 #000080 2 1>
+  <Line 20 0 10 0 #000080 2 1>
+  <Line -20 -10 40 0 #000080 2 1>
+  <Line 20 -10 0 20 #000080 2 1>
+  <Line -20 10 40 0 #000080 2 1>
+  <Line -20 -10 0 20 #000080 2 1>
+</Symbol>
